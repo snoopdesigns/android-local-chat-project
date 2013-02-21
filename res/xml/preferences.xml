@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory
+                android:title="First Category">
+                <EditTextPreference
+	                android:name="EditText Preference"
+	                android:summary="This allows you to enter a username"
+	                android:defaultValue="testuser"
+	                android:title="Edit username"
+	                android:key="editUsername" />
+        </PreferenceCategory>
+</PreferenceScreen>

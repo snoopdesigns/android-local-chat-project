@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <TextView android:id="@+id/talkerName"
+    	android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textColor="#0099cc"
+        android:text="groupname"/>
+    <TextView android:id="@+id/talkerMessage"
+    	android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:textColor="#000000"
+        android:text="status"/>
+</LinearLayout>
