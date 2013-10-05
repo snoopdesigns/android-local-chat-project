@@ -19,7 +19,6 @@ public class ChatController {
 	private MessageParser parser = new MessageParser();
 	private UserInformation userInfo = new UserInformation();
 	private GroupInformation groupInfo = new GroupInformation();
-	private audioManager aManager;
 	private Thread t;
 	private MainActivity uiUpdate;	
 	private FiniteStateMachine Initiate_Fsm;
@@ -40,7 +39,6 @@ public class ChatController {
         Log.i(TAG,"Hostname = "+hostname);
 		int port = 54321;
         client = new ChatClient(hostname, port,this);
-        aManager = new audioManager(this);
         InitStateMachines ();
         registerTimer = new Timer();
         deregisterTimer = new Timer();
@@ -167,11 +165,6 @@ public class ChatController {
 		{
 			this.SendPresenceMessage();
 		}
-		if(mes.action.contains("sound"))
-		{
-			//uiUpdate.makeToastNotification("New sound message");
-			aManager.putPacket(mes.data);
-		}
 		if(mes.action.contains("updatestatus"))
 		{
 			this.updateContactStatus(mes.action.split("_")[1],mes.data);
@@ -191,11 +184,6 @@ public class ChatController {
 	public GroupInformation getGroupInfo()
 	{
 		return this.groupInfo;
-	}
-	
-	public audioManager getAudioManager()
-	{
-		return this.aManager;
 	}
 	
 	public void updateContactStatus(String username,String status)

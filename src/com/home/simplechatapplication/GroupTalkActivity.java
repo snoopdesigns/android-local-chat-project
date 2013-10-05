@@ -61,7 +61,6 @@ public class GroupTalkActivity extends Activity implements OnKeyListener{
 			addMessage(arr.get(i).getName(),arr.get(i).getMessage());
 		}
 		adapter.notifyDataSetChanged();
-		MainActivity.getController().getAudioManager().startPlay();
     }
     public static messageAdapter getAdapter()
     {
@@ -141,32 +140,9 @@ public class GroupTalkActivity extends Activity implements OnKeyListener{
 	public boolean dispatchKeyEvent(KeyEvent event) {
 	    int action = event.getAction();
 	    int keyCode = event.getKeyCode();
-	    if (action == KeyEvent.ACTION_UP) 
-	    {
-	    	if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN ||keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-				if(this.isActiveTalk == true)
-				{
-		    		Log.i(TAG,"Talk button released!");
-		    		MainActivity.getController().getAudioManager().setGroupName(this.groupName);
-					MainActivity.getController().getAudioManager().stopRecord();
-					
-		            this.isActiveTalk = false;
-					return true;
-				}
-	        }
-	    }
 	    if (action == KeyEvent.ACTION_DOWN) 
 	    {
-	    	if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN ||keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-	            if(this.isActiveTalk == false)
-	            {
-	            	Log.i(TAG,"Talk button pressed!");
-	            	MainActivity.getController().getAudioManager().startRecord();
-	            	this.isActiveTalk = true;
-	            	return true;
-	            }
-	        }
-	    	else if(keyCode == KeyEvent.KEYCODE_BACK)
+	    	if(keyCode == KeyEvent.KEYCODE_BACK)
 	    	{
 	    		Log.i(TAG,"Back button pressed");
 	    		MainActivity.getController().invokeGroupFSM(FSMEVENTS.Bye);
